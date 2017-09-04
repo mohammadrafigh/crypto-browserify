@@ -2,10 +2,9 @@
 
 var randomBytesPath = null
 try {
-  require.resolve('nativescript-randombytes.android')
-  randomBytesPath = 'nativescript-randombytes.android'
+  randomBytesPath = require('nativescript-randombytes.android')
 } catch (e) {
-  randomBytesPath = 'nativescript-randombytes.ios'
+  randomBytesPath = require('nativescript-randombytes.ios')
 }
 
 exports.randomBytes = exports.rng = exports.pseudoRandomBytes = exports.prng = require.resolve(randomBytesPath)

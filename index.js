@@ -1,6 +1,14 @@
 'use strict'
 
-exports.randomBytes = exports.rng = exports.pseudoRandomBytes = exports.prng = require('nativescript-randombytes')
+var randomBytesPath = null
+try {
+  require.resolve('nativescript-randombytes.android')
+  randomBytesPath = 'nativescript-randombytes.android'
+} catch (e) {
+  randomBytesPath = 'nativescript-randombytes.ios'
+}
+
+exports.randomBytes = exports.rng = exports.pseudoRandomBytes = exports.prng = require.resolve(randomBytesPath)
 exports.createHash = exports.Hash = require('create-hash')
 exports.createHmac = exports.Hmac = require('create-hmac')
 
